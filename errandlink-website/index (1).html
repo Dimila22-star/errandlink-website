@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ErrandLink – We buy it. You relax.</title>
+<style>
+  :root { --green:#1f7a4d; --dark:#14331f; --light:#f4f8f5; --text:#222; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { font-family:system-ui,Arial,sans-serif; color:var(--text); line-height:1.6; }
+  section { padding:70px 8%; }
+  h2 { text-align:center; margin-bottom:32px; color:var(--dark); font-size:2rem; }
+
+  /* 1. Navigation bar */
+  nav { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between;
+        align-items:center; padding:14px 8%; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.08); }
+  .logo { font-weight:800; font-size:1.4rem; color:var(--green); }
+  nav ul { display:flex; gap:24px; list-style:none; }
+  nav a { text-decoration:none; color:var(--text); font-weight:500; }
+  nav a:hover { color:var(--green); }
+
+  /* 3. Hero section */
+  .hero { background:linear-gradient(135deg,var(--dark),var(--green)); color:#fff;
+          text-align:center; padding:110px 8%; }
+  .hero h1 { font-size:2.8rem; margin-bottom:16px; }
+  .hero p { max-width:620px; margin:0 auto 28px; font-size:1.15rem; }
+  .btn { display:inline-block; background:#ffc83d; color:#222; padding:14px 30px;
+         border-radius:30px; text-decoration:none; font-weight:700; border:none; cursor:pointer; font-size:1rem; }
+  .btn:hover { background:#ffb800; }
+
+  /* 4. How it works */
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+  .step { background:var(--light); padding:28px; border-radius:12px; text-align:center; }
+  .step .num { width:46px; height:46px; line-height:46px; margin:0 auto 14px; border-radius:50%;
+               background:var(--green); color:#fff; font-weight:700; }
+  .step h3 { margin-bottom:8px; color:var(--dark); }
+
+  /* 6. About us */
+  .about { background:var(--light); }
+  .about p { max-width:720px; margin:0 auto 14px; text-align:center; }
+
+  /* 5. Contact us form */
+  form { max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+  input, textarea { padding:12px; border:1px solid #bbb; border-radius:8px; font:inherit; }
+  textarea { min-height:120px; resize:vertical; }
+  #formMsg { text-align:center; color:var(--green); font-weight:600; margin-top:12px; }
+
+  /* 2. Footer */
+  footer { background:var(--dark); color:#ccc; text-align:center; padding:28px 8%; }
+  footer a { color:#ffc83d; text-decoration:none; margin:0 8px; }
+
+  @media (max-width:640px) { nav ul { gap:12px; font-size:.9rem; } .hero h1 { font-size:2rem; } }
+</style>
+</head>
+<body>
+
+<!-- 1. Navigation bar -->
+<nav>
+  <div class="logo">ErrandLink</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- 3. Hero section -->
+<header class="hero" id="home">
+  <h1>Snap it. We find it. Delivered to you.</h1>
+  <p>Post a photo of what you need. Trusted market sellers reply with prices, we negotiate the best deal, then buy and deliver it for a small fee.</p>
+  <a href="#contact" class="btn">Request an Item</a>
+</header>
+
+<!-- 4. How it works -->
+<section id="how">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>Post a photo</h3><p>Upload a picture of the item and your approximate budget.</p></div>
+    <div class="step"><div class="num">2</div><h3>Sellers respond</h3><p>Market sellers are alerted and say whether they have it and at what price.</p></div>
+    <div class="step"><div class="num">3</div><h3>We negotiate</h3><p>We pick the best sellers and chat with them to get you the lowest price.</p></div>
+    <div class="step"><div class="num">4</div><h3>Buy &amp; deliver</h3><p>We buy quality, safe, ready-to-use goods and deliver them to your door.</p></div>
+  </div>
+</section>
+
+<!-- 6. About us section -->
+<section class="about" id="about">
+  <h2>About Us</h2>
+  <p>ErrandLink was built to solve a simple local problem: shopping in busy markets takes time, and it is hard to know you are getting a fair price or good quality.</p>
+  <p>We connect you to market sellers and do the legwork for you. Prefer to see the goods yourself? Ask for our optional inspection visit, where we take you to the seller.</p>
+</section>
+
+<!-- 5. Contact us form -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your name" required>
+    <input type="email" id="email" placeholder="Your email" required>
+    <textarea id="message" placeholder="What do you need us to find?" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+  </form>
+  <p id="formMsg"></p>
+</section>
+
+<!-- 2. Footer -->
+<footer>
+  <p>&copy; 2026 ErrandLink. Made in Kenya.</p>
+  <p><a href="#home">Home</a><a href="#how">How it works</a><a href="#about">About</a><a href="#contact">Contact</a></p>
+</footer>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    document.getElementById("formMsg").textContent = `Thanks ${name}! We'll get back to you soon.`;
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
